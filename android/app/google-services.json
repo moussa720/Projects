@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "385980693953",
+    "project_id": "gara-ac487",
+    "storage_bucket": "gara-ac487.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385980693953:android:653301fe4827316e120340",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385980693953-952hg1uedu18vljd144pis0t43aorc0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1HItE0lSUzjmLYBXR5Lxx47y1OcrylEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385980693953-952hg1uedu18vljd144pis0t43aorc0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
