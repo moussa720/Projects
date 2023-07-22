@@ -13,10 +13,10 @@ class Manage extends StatelessWidget {
           Row(
             children: [
               Text("Mange devices",style: TextStyle(
-                fontSize: 42,
+                fontSize: 30,
                 decoration: TextDecoration.underline,
               ),),
-              SizedBox(width: 42,),
+              SizedBox(width: 120,),
               FloatingActionButton(onPressed: (){
   Navigator.push(
     context,

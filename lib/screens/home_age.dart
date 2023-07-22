@@ -10,13 +10,16 @@ class HomePage extends StatelessWidget {
       SafeArea(
         child:SingleChildScrollView(child:Column(
           children: [
-            Row(
-              children: [
-                Text("Welcome Home!",style: TextStyle(fontSize: 25,),),
-                SizedBox(width:100,),
-                IconButton(onPressed: (){}, icon:Icon(Icons.person,size: 30,)),
-                IconButton(onPressed: (){}, icon:Icon(Icons.notifications,size: 30,))
-              ],
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Text("Welcome Home!",style: TextStyle(fontSize: 25,),),
+                  SizedBox(width:100,),
+                  IconButton(onPressed: (){}, icon:Icon(Icons.person,size: 30,)),
+                  IconButton(onPressed: (){}, icon:Icon(Icons.notifications,size: 30,))
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(50.0),
