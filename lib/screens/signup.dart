@@ -20,8 +20,8 @@ final TextEditingController emailController=TextEditingController();
 final TextEditingController passwordController=TextEditingController();
 
 void handleSignup()async{
-  String firstName=firstNameController.text.trim();
-  String lastName=lastNameController.text.trim();
+  String firstName=firstNameController.text;
+  String lastName=lastNameController.text;
   String username=usernameController.text.trim();
   String email=emailController.text.trim();
   String password=passwordController.text.trim();
