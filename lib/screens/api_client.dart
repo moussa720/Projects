@@ -1,10 +1,20 @@
 import 'package:dio/dio.dart';
 
 class ApiClient {
-  final Dio dio = Dio();
+  final Dio dio;
 
-  ApiClient() {
+  ApiClient() : dio = Dio() {
+    _setupBaseOptions();
+  }
+  final Duration x=Duration(seconds: 5);
+  final Duration y=Duration(seconds: 3);
+  void _setupBaseOptions() {
     dio.options.baseUrl = 'http://127.0.0.1:8000/';
+    dio.options.connectTimeout =x; // 5 seconds
+    dio.options.receiveTimeout =y; // 3 seconds
+    dio.options.headers = {
+      'Content-Type': 'application/json', 
+    };
   }
 
   Future<String?> login(String username, String password) async {
@@ -25,7 +35,13 @@ class ApiClient {
     }
   }
 
-  Future<String?> register(String firstName, String lastName, String username, String email, String password) async {
+  Future<String?> register(
+    String firstName,
+    String lastName,
+    String username,
+    String email,
+    String password,
+  ) async {
     try {
       var response = await dio.post('api/register/', data: {
         'first_name': firstName,

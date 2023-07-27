@@ -7,34 +7,37 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-final ApiClient apiClient=ApiClient();
+ApiClient apiClient = ApiClient();
 
-final TextEditingController firstNameController=TextEditingController();
+final TextEditingController firstNameController = TextEditingController();
+final TextEditingController lastNameController = TextEditingController();
+final TextEditingController usernameController = TextEditingController();
+final TextEditingController emailController = TextEditingController();
+final TextEditingController passwordController = TextEditingController();
 
-final TextEditingController lastNameController=TextEditingController();
+void handleSignup() async {
+  String firstName = firstNameController.text;
+  String lastName = lastNameController.text;
+  String username = usernameController.text.trim();
+  String email = emailController.text.trim();
+  String password = passwordController.text.trim();
 
-final TextEditingController usernameController=TextEditingController();
+  try {
+    String? token = await apiClient.register(firstName, lastName, username, email, password);
 
-final TextEditingController emailController=TextEditingController();
-
-final TextEditingController passwordController=TextEditingController();
-
-void handleSignup()async{
-  String firstName=firstNameController.text;
-  String lastName=lastNameController.text;
-  String username=usernameController.text.trim();
-  String email=emailController.text.trim();
-  String password=passwordController.text.trim();
-  String? token=await apiClient.register(firstName,lastName,username,email,password);
-  if(token !=null){
-    print('Registration was successful!Token:$token');
-    // ignore: use_build_context_synchronously
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login()));
-  }
-  else{
-    print('Registration failed. Please try again');
+    if (token != null) {
+      print('Registration was successful! Token: $token');
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login()));
+    } else {
+      print('Registration failed. Please try again.');
+    }
+  } catch (e) {
+    print('Error occurred during registration: $e');
+    // Handle the error here, e.g., display an error message to the user
   }
 }
+
 
   @override
   Widget build(BuildContext context) {

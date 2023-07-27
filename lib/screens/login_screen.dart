@@ -33,6 +33,7 @@ class _LoginState extends State<Login> {
        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ButtomNavigationBar()));
     } else {
       print('Login failed. Invalid credentials.');
+      print(token);
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Invalid username or password. Please try again.')),
