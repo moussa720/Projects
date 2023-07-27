@@ -10,6 +10,7 @@ class ApiClient {
   final Duration y=Duration(seconds: 3);
   void _setupBaseOptions() {
     dio.options.baseUrl = 'http://127.0.0.1:8000/';
+
     dio.options.connectTimeout =x; // 5 seconds
     dio.options.receiveTimeout =y; // 3 seconds
     dio.options.headers = {
@@ -25,10 +26,13 @@ class ApiClient {
       });
 
       if (response.statusCode == 200) {
-        return response.data['token'];
+        print("aaaaa");
+        print(response.data);
+        return response.data;
       } else {
         return null;
       }
+      
     } catch (e) {
       print('Error occurred while login: $e');
       return null;
@@ -52,7 +56,7 @@ class ApiClient {
       });
 
       if (response.statusCode == 200) {
-        return response.data['token'];
+        return response.data;
       } else {
         return null;
       }

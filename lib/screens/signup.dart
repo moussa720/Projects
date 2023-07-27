@@ -23,7 +23,7 @@ void handleSignup() async {
   String password = passwordController.text.trim();
 
   try {
-    String? token = await apiClient.register(firstName, lastName, username, email, password);
+    String? token = await apiClient.register(firstName, lastName, username, email, password).toString();
 
     if (token != null) {
       print('Registration was successful! Token: $token');
@@ -31,10 +31,10 @@ void handleSignup() async {
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login()));
     } else {
       print('Registration failed. Please try again.');
+      print(token);
     }
   } catch (e) {
     print('Error occurred during registration: $e');
-    // Handle the error here, e.g., display an error message to the user
   }
 }
 
@@ -55,7 +55,9 @@ void handleSignup() async {
               ),
                 Padding(
                 padding: const EdgeInsets.all(5.0),
-                child: TextField(obscureText: false,
+                child: TextField(
+                controller: firstNameController,
+                obscureText: false,
                 decoration: InputDecoration(border: OutlineInputBorder(),
                 label:Text("First Name",style: TextStyle(color: Colors.white),
                 )
@@ -64,7 +66,10 @@ void handleSignup() async {
               ),
               Padding(
                 padding: const EdgeInsets.all(5.0),
-                child: TextField(obscureText: false,
+                child: 
+                TextField(
+                controller: lastNameController,
+                obscureText: false,
                 decoration: InputDecoration(border: OutlineInputBorder(),
                 label:Text("Last Name",style: TextStyle(color: Colors.white),
                 )
@@ -73,7 +78,9 @@ void handleSignup() async {
               ),
                             Padding(
                 padding: const EdgeInsets.all(5.0),
-                child: TextField(obscureText: false,
+                child: TextField(
+                controller:usernameController,  
+                obscureText: false,
                 decoration: InputDecoration(border: OutlineInputBorder(),
                 label:Text("Username",style: TextStyle(color: Colors.white),)),
                 ),
@@ -81,6 +88,7 @@ void handleSignup() async {
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: TextField(
+                  controller: passwordController,
                   obscureText: true,
                 decoration: InputDecoration(border: OutlineInputBorder(),
                 label:Text("password",style: TextStyle(color: Colors.white),)),
@@ -89,7 +97,8 @@ void handleSignup() async {
                 Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: TextField(
-                  obscureText: true,
+                  controller: emailController,
+                  obscureText: false,
                 decoration: InputDecoration(border: OutlineInputBorder(),
                 label:Text("email",style: TextStyle(color: Colors.white),)),
                 ),
