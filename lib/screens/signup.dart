@@ -23,8 +23,9 @@ void handleSignup() async {
   String password = passwordController.text.trim();
 
   try {
-    String? token = await apiClient.register(firstName, lastName, username, email, password).toString();
+    String? token = apiClient.register(firstName, lastName, username, email, password).toString();
 
+    // ignore: unnecessary_null_comparison
     if (token != null) {
       print('Registration was successful! Token: $token');
       // ignore: use_build_context_synchronously

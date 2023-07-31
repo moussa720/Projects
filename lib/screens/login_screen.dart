@@ -24,8 +24,8 @@ class _LoginState extends State<Login> {
       );
       return;
     }
+    String? token = await apiClient.login(username, password);
 
-    String? token = await apiClient.login(username, password).toString();
 
     if (token != null) {
       print('Login successful! Token: $token');

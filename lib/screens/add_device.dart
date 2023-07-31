@@ -10,24 +10,10 @@ class Add extends StatelessWidget {
   Widget build(BuildContext context) {
     var list=[];
     return Scaffold(
+      appBar: AppBar(title: Text("Add device"),),
       body: SafeArea(child:
       Column(
-        children: [
-          Row(
-            children: [
-              TextButton(onPressed: (){
-            Navigator.pop(context);
-          },
-          child:Image.asset("assets/precedent.png",
-              height: 50,
-              width: 80,
-              )),
-              Text("Add Device",style: TextStyle(
-                fontSize: 40,
-                decoration: TextDecoration.underline,
-              ),),
-            ],
-          ),
+        children: [       
           SizedBox(height: 35,),
           Align(
             alignment: Alignment.centerLeft,

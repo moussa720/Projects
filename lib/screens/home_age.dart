@@ -1,3 +1,4 @@
+import 'package:app/screens/profile._page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   Text("Welcome Home!",style: TextStyle(fontSize: 25,),),
                   SizedBox(width:100,),
-                  IconButton(onPressed: (){}, icon:Icon(Icons.person,size: 30,)),
+                  IconButton(onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (context) => Profile()));}, icon:Icon(Icons.person,size: 30,)),
                   IconButton(onPressed: (){}, icon:Icon(Icons.notifications,size: 30,))
                 ],
               ),

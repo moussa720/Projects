@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiClient {
   final Dio dio;
@@ -6,15 +7,13 @@ class ApiClient {
   ApiClient() : dio = Dio() {
     _setupBaseOptions();
   }
-  final Duration x=Duration(seconds: 5);
-  final Duration y=Duration(seconds: 3);
+
   void _setupBaseOptions() {
     dio.options.baseUrl = 'http://127.0.0.1:8000/';
-
-    dio.options.connectTimeout =x; // 5 seconds
-    dio.options.receiveTimeout =y; // 3 seconds
+    dio.options.connectTimeout = Duration(seconds: 5); // 5 seconds
+    dio.options.receiveTimeout = Duration(seconds: 3); // 3 seconds
     dio.options.headers = {
-      'Content-Type': 'application/json', 
+      'Content-Type': 'application/json',
     };
   }
 
@@ -26,17 +25,24 @@ class ApiClient {
       });
 
       if (response.statusCode == 200) {
-        print("aaaaa");
-        print(response.data);
-        return response.data;
+        // Save the access token to shared preferences
+        var token = response.data["access"];
+        await _saveTokenToSF(token.toString());
+
+        print("response $token");
+        return response.data.toString();
       } else {
         return null;
       }
-      
     } catch (e) {
       print('Error occurred while login: $e');
       return null;
     }
+  }
+
+  Future<void> _saveTokenToSF(String token) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token', token.toString());
   }
 
   Future<String?> register(
