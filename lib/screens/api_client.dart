@@ -9,9 +9,9 @@ class ApiClient {
   }
 
   void _setupBaseOptions() {
-    dio.options.baseUrl = 'http://127.0.0.1:8000/';
-    dio.options.connectTimeout = Duration(seconds: 5); // 5 seconds
-    dio.options.receiveTimeout = Duration(seconds: 3); // 3 seconds
+    dio.options.baseUrl = 'http://127.0.0.1:8000/'; 
+    dio.options.connectTimeout = Duration(seconds: 5); 
+    dio.options.receiveTimeout = Duration(seconds: 3); 
     dio.options.headers = {
       'Content-Type': 'application/json',
     };
