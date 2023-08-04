@@ -25,7 +25,6 @@ class ApiClient {
       });
 
       if (response.statusCode == 200) {
-        // Save the access token to shared preferences
         var token = response.data["access"];
         await _saveTokenToSF(token.toString());
 

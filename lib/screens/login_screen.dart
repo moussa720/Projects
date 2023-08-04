@@ -3,8 +3,8 @@ import 'package:app/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'forgot_password.dart';
 import 'api_client.dart';
-class Login extends StatefulWidget {
 
+class Login extends StatefulWidget {
   @override
   State<Login> createState() => _LoginState();
 }
@@ -24,13 +24,13 @@ class _LoginState extends State<Login> {
       );
       return;
     }
+    
     String? token = await apiClient.login(username, password);
-
 
     if (token != null) {
       print('Login successful! Token: $token');
-       // ignore: use_build_context_synchronously
-       Navigator.of(context).push(MaterialPageRoute(builder: (context) => ButtomNavigationBar()));
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ButtomNavigationBar()));
     } else {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
@@ -38,58 +38,76 @@ class _LoginState extends State<Login> {
       );
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: 
-      SafeArea(child: 
-      Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(50.0),
-                child: Text("Login",style: TextStyle(fontSize: 40,color: Colors.white),),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: TextField(
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Login",
+                  style: TextStyle(fontSize: 40, color: Colors.white),
+                ),
+                SizedBox(height: 30),
+                TextField(
                   controller: usernameController,
                   obscureText: false,
-                decoration: InputDecoration(border: OutlineInputBorder(),
-                label:Text("username",style: TextStyle(color: Colors.white),
-                )
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Username",
+                    labelStyle: TextStyle(color: Colors.white),
+                  ),
                 ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: TextField(
+                SizedBox(height: 20),
+                TextField(
                   controller: passwordController,
                   obscureText: true,
-                decoration: InputDecoration(border: OutlineInputBorder(),
-                label:Text("password",style: TextStyle(color: Colors.white),)),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Password",
+                    labelStyle: TextStyle(color: Colors.white),
+                  ),
                 ),
-              ),
-              ElevatedButton(onPressed:handleLogin, child:Text("Login")),
-              TextButton(onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ForgotPassword()));
-              }, child: Text("Forgot password!",style: TextStyle(fontSize: 15,color: Colors.white),),),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("you don't have an account ?",style: TextStyle(fontSize: 14,color: Colors.white)),
-                  TextButton(onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (context) => Signup()));
-                    }, 
-                  child: Text("register",style:TextStyle(fontSize: 14,color: Colors.purple),))
-                ],
-                
-              ),
+                SizedBox(height: 30),
+                ElevatedButton(onPressed: handleLogin, child: Text("Login")),
+                SizedBox(height: 15),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForgotPassword()));
+                  },
+                  child: Text(
+                    "Forgot password!",
+                    style: TextStyle(fontSize: 15, color: Colors.white),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account? ",
+                      style: TextStyle(fontSize: 14, color: Colors.white),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Signup()));
+                      },
+                      child: Text(
+                        "Register",
+                        style: TextStyle(fontSize: 14, color: Colors.purple),
+                      ),
+                    )
+                  ],
+                ),
               ],
+            ),
           ),
         ),
-      ),
       ),
     );
   }

@@ -62,7 +62,7 @@ class _ProfileState extends State<Profile> {
             SizedBox(height: 16),
             Text(
               "First name:",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Text(
               firstName,
@@ -71,16 +71,16 @@ class _ProfileState extends State<Profile> {
             SizedBox(height: 8),
             Text(
               "Last name:",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
             ),
             Text(
               lastName,
-              style: TextStyle(fontSize: 18, color: Colors.white),
+              style: TextStyle(fontSize: 18,),
             ),
             SizedBox(height: 8),
             Text(
               "Username:",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Text(
               username,
@@ -89,11 +89,11 @@ class _ProfileState extends State<Profile> {
             SizedBox(height: 8),
             Text(
               "Email:",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
             ),
             Text(
               email,
-              style: TextStyle(fontSize: 18, color: Colors.white),
+              style: TextStyle(fontSize: 18),
             ),
           ],
         ),
