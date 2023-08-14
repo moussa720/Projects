@@ -30,7 +30,6 @@ class ForgotPassword extends StatelessWidget {
               height: 55,
               width: 90,
               child: ElevatedButton(onPressed: (
-                // Within the `FirstRoute` widget
               ){
 
               }, child: Text("submit"))),
